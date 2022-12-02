@@ -1,0 +1,374 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @RenderSection("Styles", required: false)
+    @Scripts.Render("~/bundles/jquery")
+    
+    <title>@ViewBag.Title </title>
+    <style>
+        
+        #rcorners2 {
+            border-radius: 15px 5px 15px 5px;
+            border: 2px solid #0094ff;
+            padding: 20px;
+            margin: 10px;
+            width: auto;
+            height: 100px;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            padding-top:0;
+            overflow-x:hidden;
+           
+        }
+
+        .titleHeaders {
+            font-size: 14px;
+            color: #18385c;
+        }
+
+        .topHead {
+            
+            background: white;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            border-radius: 8px;
+            padding: 0.5em;
+            height: fit-content;
+            margin-bottom: 1em;
+        }
+
+        .selectOptions {
+            border: 0.5px solid gray;
+            border-radius: 5px;
+            width: 100%;
+            padding: 0.1em;
+            padding-left: 0.5em;
+        }
+
+        .container {
+            border-radius: 10px;
+            padding: 1em;
+            background-color: white;
+            width: 100%;
+            /*height: 580px;*/
+        }
+
+        .scrollContainer {
+            overflow-y: auto;
+            height: 340px;
+            -ms-overflow-style: none; /* IE 11 */
+            scrollbar-width: none; /* Firefox 64 */
+        }
+
+            .scrollContainer::-webkit-scrollbar {
+                /* Chrome */
+                display: none;
+            }
+
+        .sidebar {
+            height: 100vh !important;
+        }
+
+        .card {
+            width: 100%;
+            background: #ffffff;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 10px;
+            border-radius: 10px;
+            margin-left: 0.8em;
+            margin-top: 2em;
+            padding: 0.5em;
+        }
+
+        .card2 {
+            width: 240px;
+            background: #ffffff;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 10px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+
+        .navbar1 {
+            color: white;
+            background: #18385c;
+            padding-left: 2rem !important;
+            padding-top:1rem;
+        }
+
+        .count {
+            font-size: 40px;
+            font-weight: bolder;
+        }
+
+        .day {
+            font-size: 35px;
+            font-weight: bolder;
+            opacity: 0.5;
+            margin-left: 15px;
+        }
+
+        .heading {
+            font-size: 20;
+            font-weight: bold;
+        }
+
+        .filter {
+            align-items: flex-end;
+            text-align: right;
+        }
+
+        .addAppoint {
+            border-radius: 4px;
+            background: #18385c;
+            color: white;
+            font-size: 15px;
+            text-align: center;
+            height: 30px;
+            width: 200px;
+            margin-left: 30px;
+        }
+
+        .date {
+            border-radius: 25px;
+            background: linear-gradient(to right, #18385c 50%, white 50%);
+            width: 80px;
+            height: 30px;
+            align-items: flex-end;
+            text-align: center;
+        }
+
+        img {
+            border-radius: 50%;
+            height: 60px;
+            width: 60px;
+        }
+
+        .name {
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .apTime {
+            font-size: 20px;
+            font-weight: bolder;
+        }
+
+        .apDate {
+            font-size: 10px;
+            font-weight: lighter;
+            margin-top: -8px;
+        }
+
+        .apIssue {
+            opacity: 0.5;
+            font-size: 10px;
+            margin-top: 10px;
+        }
+
+        .details {
+            color: skyblue;
+            text-align: center;
+            font-size: 12px;
+            margin-top: -10px;
+            padding-bottom: 10px;
+        }
+
+        .vL {
+            border-left: 1px solid black;
+            height: 20px;
+            opacity: 0.2;
+        }
+
+        .line {
+            margin: 0px;
+            margin-left: -30px;
+        }
+
+        .call {
+            margin-left: -15px;
+            margin-right: 15px;
+        }
+
+        .video {
+            margin-left: -10px;
+        }
+
+        .message {
+            margin-right: 5px;
+        }
+
+        .vL2 {
+            border-left: 1px solid black;
+            height: 40px;
+            opacity: 0.2;
+            margin-left: 20px;
+        }
+
+        .line2 {
+            margin: 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .active {
+            background-color: white;
+            border-radius: 5px;
+            font-size: 15px;
+            padding: 0.5em;
+            margin-right: -2em;
+            margin-top: 1em;
+        }
+
+        .inActive {
+            color: white;
+            font-size: 15px;
+            margin-top: 1.5em;
+        }
+
+        .rotate {
+            transform: rotate(270deg);
+        }
+        .col-md-10{
+            padding:0 !important;
+        }
+        .topHead{
+            vertical-align:middle;
+            padding:15px 5px 10px;
+        }
+        a{
+            text-decoration:none;
+        }
+        .col-md-1 a {
+            color: black;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="row">
+        <div class="col-12 col-md-2 navbar1">
+            Connect My Doc
+            <div style="text-align: right; margin-top: -25px;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class=" rotate bi bi-bar-chart-fill" viewBox="0 0 16 16">
+                    <path d="M1 11a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-3zm5-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V2z" />
+                </svg>
+            </div>
+            <div class="sidebar">
+                <div class="active">
+                    <a href="/Home/Index" style="color: #18385c;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#18385c" class="bi bi-bar-chart-fill" viewBox="0 0 16 16">
+                            <path d="M1 11a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-3zm5-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V2z" />
+                        </svg>
+                        Dashboard
+                    </a>
+                </div>
+                <div class="inActive">
+                    <a class="inActive" href="/ViewPatient/Index">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                            <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
+                        </svg>
+                        Patients
+                    </a>
+                </div>
+                <div class="inActive">
+                    <a class="inActive" href="/GetDoctorData/ViewDoctorData/1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear" viewBox="0 0 16 16">
+                            <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z" />
+                            <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z" />
+                        </svg>
+                        Settings
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-10">
+            <div class="topHead">
+                <div class="row">
+                    @if(Request.Url.ToString().Contains("Appointment")||Request.Url.ToString().Contains("Home")|| Request.Url.ToString().Contains(""))
+                    {
+
+                    <div class="col-md-1 col-xl-3 col-xs-4 col-12" style="color: black; font-size: 25px; font-weight: bolder;margin-top: 0.2em;">
+                        Appointments
+                    </div>
+                    <div class="col-md-2 col-xl-2 col-xs-4 col-12">
+                        <div class="selectOptions">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                                <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" />
+                            </svg>
+                            <select id="location" style="width:80%; height: 30px; border: none; font-size: 12px;">
+                                <option value="@ViewBag.DoctorLocation" selected>@ViewBag.DoctorLocation</option>
+                                <option value="">....</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-2 col-xl-2 col-12">
+                        <div class="selectOptions">
+                            <i class="fas fa-stethoscope"></i>
+                            <select id="doctor" style="width:80%; height: 30px; border: none; font-size: 12px;">
+                                <option value="@User.Identity.Name" selected>@User.Identity.Name</option>
+                  
+                                <option value="..."></option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-2 ">
+                        <div style="color: blue; font-style: italic; font-size: 12px; padding-top: 0.6em;">
+                            
+                        </div>
+                        
+                    </div>
+                    }
+                <div class="col-md-1" style="padding-top:5px;text-align:right;">
+
+                    @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "LogoutForm" }))
+                    {
+                @Html.AntiForgeryToken()
+                                <a href="javascript:document.getElementById('LogoutForm').submit()">
+
+                                    Logout
+
+                                </a>}
+                </div>
+                    
+                    <div class="col-md-2">
+                       
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="padding-left:0; margin-left:0" fill="currentColor" class="bi bi-bell-fill" viewBox="0 0 16 16">
+                                <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z" />
+                            </svg>
+                        
+                        <select id="user" style="width:80px; height: 28px; border: none; font-size: 10px;margin-left: 1em;">
+                            <option value="@User.Identity.Name" selected>@User.Identity.Name</option>
+                            <option value="">....</option>
+                        </select>
+                        <img style="width: 2em; height: 2em;" src="https://st2.depositphotos.com/1104517/11965/v/600/depositphotos_119659092-stock-illustration-male-avatar-profile-picture-vector.jpg">
+                    </div>
+                </div>
+            </div>
+            @RenderBody()
+        </div>
+
+    </div>
+    @*@Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")*@
+    @RenderSection("scripts", required: false)
+</body>
+</html>

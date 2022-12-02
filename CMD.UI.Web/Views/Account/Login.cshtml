@@ -1,0 +1,88 @@
+﻿@using CMD.UI.Web.Models
+@model LoginViewModel
+@{
+    Layout = "";
+}
+@{
+    ViewBag.Title = "Log in";
+}
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<style>
+    body {
+        overflow-x: hidden;
+        background:
+    }
+    .row{
+        height:100vh;
+    }
+
+    input {
+        border-top: 0;
+        border-left: 0;
+        border-right: 0;
+    }
+
+    .logiButton {
+        padding: 5px 10px 5px 10px;
+        border-radius: 5px;
+        color: white;
+        background-color: rgb(140, 31, 243);
+    }
+
+    label {
+        margin-right: 115px;
+    }
+</style>
+<div class="row">
+
+    <div class="col-lg-6">
+        <img class="img-responsive" src="../../Content/Images/CMD-Login.png" width="100%">
+
+    </div>
+    <div class="col-lg-6" style="text-align: center; padding: 80px;">
+        <div class="col-lg-12" style="margin: auto;">
+            <br>
+            <h1><label style="color: #0b385d;font-weight: bold;font-size: 25px;text-align:center;">Welcome to CMD</label></h1>
+        </div>
+        <br><br>
+        @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "login-container", @title= "loginForm", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+    <div  style="padding-left:100px">
+        <div class="col-lg-6">
+            <mat-form-field class="example-full-width">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.LabelFor(m => m.Email, new {@style = "padding-right:30px" })
+                @Html.TextBoxFor(m => m.Email, new { @attribute = "matInput", @formControlName = "Email" })
+                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+            </mat-form-field>
+        </div><br>
+        <div class="col-lg-6">
+            <mat-form-field class="example-full-width">
+                @Html.LabelFor(m => m.Password)
+                @Html.PasswordFor(m => m.Password, new { @attribute = "matInput", @formControlName = "Password" })
+                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+            </mat-form-field>
+        </div><br>
+        <div class="col-lg-6 mb-4">
+            <div class="example-button-row">
+                <button mat-raised-button type="submit" color="primary" class="logiButton mx-4"
+                        style="background-color: #0b385d;">
+                    Login
+                </button>
+            </div>
+        </div>
+    </div>
+            <p style="padding-right: 100px">
+                @Html.ActionLink("Register as a new user", "Register")
+            </p>
+        }
+
+    </div>
+
+        </div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,12 @@
+D:\cmd-appointments\cmd-appointments\CMD.Exceptions\bin\Debug\CMD.Exceptions.dll
+D:\cmd-appointments\cmd-appointments\CMD.Exceptions\bin\Debug\CMD.Exceptions.pdb
+D:\cmd-appointments\cmd-appointments\CMD.Exceptions\obj\Debug\CMD.Exceptions.csproj.AssemblyReference.cache
+D:\cmd-appointments\cmd-appointments\CMD.Exceptions\obj\Debug\CMD.Exceptions.csproj.CoreCompileInputs.cache
+D:\cmd-appointments\cmd-appointments\CMD.Exceptions\obj\Debug\CMD.Exceptions.dll
+D:\cmd-appointments\cmd-appointments\CMD.Exceptions\obj\Debug\CMD.Exceptions.pdb
+C:\Users\hp\Downloads\cmd-developer\cmd-developer\CMD.Exceptions\bin\Debug\CMD.Exceptions.dll
+C:\Users\hp\Downloads\cmd-developer\cmd-developer\CMD.Exceptions\bin\Debug\CMD.Exceptions.pdb
+C:\Users\hp\Downloads\cmd-developer\cmd-developer\CMD.Exceptions\obj\Debug\CMD.Exceptions.csproj.AssemblyReference.cache
+C:\Users\hp\Downloads\cmd-developer\cmd-developer\CMD.Exceptions\obj\Debug\CMD.Exceptions.csproj.CoreCompileInputs.cache
+C:\Users\hp\Downloads\cmd-developer\cmd-developer\CMD.Exceptions\obj\Debug\CMD.Exceptions.dll
+C:\Users\hp\Downloads\cmd-developer\cmd-developer\CMD.Exceptions\obj\Debug\CMD.Exceptions.pdb

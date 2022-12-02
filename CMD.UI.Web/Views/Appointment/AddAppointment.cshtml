@@ -1,0 +1,213 @@
+﻿
+
+@model CMD.UI.Web.ViewModel.AppointmentViewModel
+
+@{
+    ViewBag.Title = "Appointment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .inst {
+        font-size:17px;
+        color:darkslategrey;
+    }
+    .col-lg-7{
+        box-shadow:5px 5px 10px grey;
+        padding:15px 10px;
+        margin-right:25px;
+    }
+    .col-lg-4 {
+        box-shadow: 5px 5px 10px grey;
+        padding: 15px 10px;
+        
+
+    }
+    .image{
+       border-radius:40%;
+        height:100%;
+        width:75%;
+    }
+    .control-label{
+        font-weight:bold;
+    }
+    
+</style>
+
+<div class="container p-5">
+    <div class="row">
+        <h1>New Appointment</h1>
+        <hr />
+        <div class="col-lg-7" style="padding-left:20px">
+
+
+            @using (Html.BeginForm("AddAppointment", "Appointment", FormMethod.Post, new { @id = "contactForm", @name = "contactForm" }))
+            {
+                @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+                <div class="form-group">
+
+                    <div class="col-md-7 pb-3">
+                        <label class="control-label col-md-6">Patient Name</label>
+                        <div class="editor-field">
+                            @Html.TextBoxFor(model => model.PatientName, htmlAttributes: new { @class = "form-control " })
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group ">
+                    <label class="control-label col-md-6">Select Doctor</label>
+                    <div class="col-md-7 pb-3">
+                        @Html.DropDownListFor(x => x.Doctor_Id, Model.Doctors, new { @class = "form-control" })
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-6" })
+                    <div class="col-md-7 pb-3">
+                        @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control" } })
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Time, htmlAttributes: new { @class = "control-label col-md-6" })
+                    <div class="col-md-7 pb-3">
+                        @Html.EditorFor(model => model.Time, new { htmlAttributes = new { @class = "form-control" } })
+
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">Issues</label>
+                    <div class="col-md-7 pb-3">
+                        @Html.ListBoxFor(model => model.MedicalIssues, Model.Issues, new { @class = "form-control", size = 3 })
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Reason, htmlAttributes: new { @class = "control-label col-md-7" })
+                    <div class="col-md-10 pb-3 ">
+                        @Html.TextAreaFor(model => model.Reason, new { htmlAttributes = new { @class = "form-control", @rows=2, @cols=39} })
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-5 col-md-10 " style="margin-top:10px">
+                        <input type="submit" value="Confirm" id="btnSave" class="btn btn-success btn-block" />
+                    </div>
+                </div>
+            </div>
+            }
+        </div>
+        <div class="col-lg-4">
+            <div class="row p-2" style="height: 250px;">
+                <div class="text-center">
+                    <img class="image" src="https://i.pinimg.com/originals/ea/66/cd/ea66cdf309ec3341db8d38bb298afa0f.gif">
+                </div>
+            </div>
+            <div class="row">
+                <h2 class="pt-4" style="color:cornflowerblue; margin-bottom:30px;">Instructions</h2>
+                <p class="pb-1 inst">Advance Booking For Appointment is Only Avaiable for Next 30 days</p>
+                <p class="pb-1 inst">Appointment Time is 9:00 AM to 7:00 PM</p>
+                <p class="pb-1 inst">Patient Must Be Registered To Book An Appointment   </p>
+                <p class="pb-1 inst">Please Check All Information is Correct Before Submit</p>
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
+<div  class="modal-dialog" id="confirmDialog" title="Confirm Details">
+    <div class="modal-content">
+        
+        <div class="modal-body">
+            <p>Make sure all information you have entered is correct?</p>
+        </div>
+            
+        </div>
+    </div>
+@section Scripts {
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/start/jquery-ui.css">
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+    <script type="text/javascript">
+    $(document).ready(function () {
+
+
+       
+
+        $("#PatientName").autocomplete({
+
+            source: function (request, response) {
+
+                //var text = $("#txtSearch").val();
+
+                $.ajax({
+
+                    type: "GET",
+                    url: '@Url.Action("GetPatients")',
+                    data: { term: request.term },
+                    success: function (data) {
+
+                        response($.map(data, function (item) {
+
+                            return { label: item, value: item };
+
+
+                        }))
+
+                    }
+
+
+                })
+
+            }
+
+        });
+
+        $('#confirmDialog').dialog({
+            autoOpen: false,
+            width: 500,
+            modal: true,
+            resizable: false,
+            buttons: {
+                "Submit": function () {
+                    $(".ui-dialog-buttonpane button:contains('Submit')").button();
+                    $(".ui-dialog-buttonpane button:contains('Cancel')").button();
+                    $("#contactForm").submit();
+                    $(this).dialog("close");
+                },
+                "Cancel": function () {
+                    $(this).dialog("close");
+                }
+            }
+        });
+       
+
+        $('#btnSave').click(function (e) {
+
+            e.preventDefault();
+            $('#confirmDialog').dialog('open');
+            return false;
+
+        });
+
+
+      
+    });
+
+    </script>
+
+   
+}

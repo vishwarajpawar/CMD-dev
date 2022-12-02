@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CMD_DatabaseModelStoreContainer" CdmEntityContainer="CMD_DatabaseEntities">
+    <EntitySetMapping Name="ActiveIssues">
+      <EntityTypeMapping TypeName="CMD_DatabaseModel.ActiveIssue">
+        <MappingFragment StoreEntitySet="ActiveIssues">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Patient_Id" ColumnName="Patient_Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Appointments">
+      <EntityTypeMapping TypeName="CMD_DatabaseModel.Appointment">
+        <MappingFragment StoreEntitySet="Appointment">
+          <ScalarProperty Name="Appointment_Id" ColumnName="Appointment_Id" />
+          <ScalarProperty Name="Patient_Id" ColumnName="Patient_Id" />
+          <ScalarProperty Name="Doc_Id" ColumnName="Doc_Id" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="DateTime_Appoinment" ColumnName="DateTime_Appoinment" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="DoctorsNote" ColumnName="DoctorsNote" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Doctors">
+      <EntityTypeMapping TypeName="CMD_DatabaseModel.Doctor">
+        <MappingFragment StoreEntitySet="Doctor">
+          <ScalarProperty Name="Doctor_Id" ColumnName="Doctor_Id" />
+          <ScalarProperty Name="DoctorName" ColumnName="DoctorName" />
+          <ScalarProperty Name="Speciality" ColumnName="Speciality" />
+          <ScalarProperty Name="NPINumber" ColumnName="NPINumber" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="ParcticeLocation" ColumnName="ParcticeLocation" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MedicalIssues">
+      <EntityTypeMapping TypeName="CMD_DatabaseModel.MedicalIssue">
+        <MappingFragment StoreEntitySet="MedicalIssues">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Patient_Id" ColumnName="Patient_Id" />
+          <ScalarProperty Name="Appointment_Id" ColumnName="Appointment_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Patients">
+      <EntityTypeMapping TypeName="CMD_DatabaseModel.Patient">
+        <MappingFragment StoreEntitySet="Patient">
+          <ScalarProperty Name="Reg_Date" ColumnName="Reg_Date" />
+          <ScalarProperty Name="Patient_Id" ColumnName="Patient_Id" />
+          <ScalarProperty Name="PatientName" ColumnName="PatientName" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="BloodGroup" ColumnName="BloodGroup" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Height" ColumnName="Height" />
+          <ScalarProperty Name="Allergies" ColumnName="Allergies" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Patient_Symptom">
+      <EntityTypeMapping TypeName="CMD_DatabaseModel.Patient_Symptom">
+        <MappingFragment StoreEntitySet="Patient_Symptom">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Symptom_ID" ColumnName="Symptom_ID" />
+          <ScalarProperty Name="Symptom_Name" ColumnName="Symptom_Name" />
+          <ScalarProperty Name="Reading" ColumnName="Reading" />
+          <ScalarProperty Name="symp_Doctor_ID" ColumnName="symp_Doctor_ID" />
+          <ScalarProperty Name="syom_Patient_ID" ColumnName="syom_Patient_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Prescriptions">
+      <EntityTypeMapping TypeName="CMD_DatabaseModel.Prescription">
+        <MappingFragment StoreEntitySet="Prescription">
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="SymptomName" ColumnName="SymptomName" />
+          <ScalarProperty Name="pres_Patient_ID" ColumnName="pres_Patient_ID" />
+          <ScalarProperty Name="Prescription_ID" ColumnName="Prescription_ID" />
+          <ScalarProperty Name="pres_Appointment_ID" ColumnName="pres_Appointment_ID" />
+          <ScalarProperty Name="Medicine_Name" ColumnName="Medicine_Name" />
+          <ScalarProperty Name="Medicine_Duration" ColumnName="Medicine_Duration" />
+          <ScalarProperty Name="Time_Of_Day" ColumnName="Time_Of_Day" />
+          <ScalarProperty Name="Medicine_Cycle" ColumnName="Medicine_Cycle" />
+          <ScalarProperty Name="Additional_Comments" ColumnName="Additional_Comments" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Recommendations">
+      <EntityTypeMapping TypeName="CMD_DatabaseModel.Recommendation">
+        <MappingFragment StoreEntitySet="Recommendation">
+          <ScalarProperty Name="Recommendation_Id" ColumnName="Recommendation_Id" />
+          <ScalarProperty Name="Rec_Doctor_Id" ColumnName="Rec_Doctor_Id" />
+          <ScalarProperty Name="Patient_Id" ColumnName="Patient_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Symptoms">
+      <EntityTypeMapping TypeName="CMD_DatabaseModel.Symptom">
+        <MappingFragment StoreEntitySet="Symptom">
+          <ScalarProperty Name="SymptomId" ColumnName="SymptomId" />
+          <ScalarProperty Name="SymptomName" ColumnName="SymptomName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tests">
+      <EntityTypeMapping TypeName="CMD_DatabaseModel.Test">
+        <MappingFragment StoreEntitySet="Test">
+          <ScalarProperty Name="Test_Id" ColumnName="Test_Id" />
+          <ScalarProperty Name="TestName" ColumnName="TestName" />
+          <ScalarProperty Name="Appointment_Id" ColumnName="Appointment_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vitals">
+      <EntityTypeMapping TypeName="CMD_DatabaseModel.Vital">
+        <MappingFragment StoreEntitySet="Vitals">
+          <ScalarProperty Name="VitalID" ColumnName="VitalID" />
+          <ScalarProperty Name="BloodPressure" ColumnName="BloodPressure" />
+          <ScalarProperty Name="Temperature" ColumnName="Temperature" />
+          <ScalarProperty Name="DiabaetesReading" ColumnName="DiabaetesReading" />
+          <ScalarProperty Name="RespirationReadings" ColumnName="RespirationReadings" />
+          <ScalarProperty Name="Patient_ID" ColumnName="Patient_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="GetBYId" FunctionName="CMD_DatabaseModel.Store.GetBYId">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CMD_DatabaseModel.GetBYId_Result">
+          <ScalarProperty Name="Appointment_Id" ColumnName="Appointment_Id" />
+          <ScalarProperty Name="DoctorName" ColumnName="DoctorName" />
+          <ScalarProperty Name="Speciality" ColumnName="Speciality" />
+          <ScalarProperty Name="DateTime_Appoinment" ColumnName="DateTime_Appoinment" />
+          <ScalarProperty Name="comment" ColumnName="comment" />
+          <ScalarProperty Name="DoctorsNote" ColumnName="DoctorsNote" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetParticularPatient" FunctionName="CMD_DatabaseModel.Store.GetParticularPatient">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CMD_DatabaseModel.GetParticularPatient_Result">
+          <ScalarProperty Name="patientName" ColumnName="patientName" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="BloodGroup" ColumnName="BloodGroup" />
+          <ScalarProperty Name="Height" ColumnName="Height" />
+          <ScalarProperty Name="Allergies" ColumnName="Allergies" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="DateTime_Appoinment" ColumnName="DateTime_Appoinment" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="DoctorsNote" ColumnName="DoctorsNote" />
+          <ScalarProperty Name="DoctorName" ColumnName="DoctorName" />
+          <ScalarProperty Name="Speciality" ColumnName="Speciality" />
+          <ScalarProperty Name="MedicalProblem" ColumnName="MedicalProblem" />
+          <ScalarProperty Name="SymptomName" ColumnName="SymptomName" />
+          <ScalarProperty Name="Symptom_Name" ColumnName="Symptom_Name" />
+          <ScalarProperty Name="Reading" ColumnName="Reading" />
+          <ScalarProperty Name="Medicine_Name" ColumnName="Medicine_Name" />
+          <ScalarProperty Name="Medicine_Duration" ColumnName="Medicine_Duration" />
+          <ScalarProperty Name="Medicine_Cycle" ColumnName="Medicine_Cycle" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Additional_Comments" ColumnName="Additional_Comments" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="Issues">
+      <EntityTypeMapping TypeName="CMD_DatabaseModel.Issue">
+        <MappingFragment StoreEntitySet="Issues">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,452 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CMD_DatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ActiveIssue">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Patient_Id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Patient" Relationship="Self.FK_ActiveIssues_Patient1" FromRole="ActiveIssues" ToRole="Patient" />
+  </EntityType>
+  <EntityType Name="Appointment">
+    <Key>
+      <PropertyRef Name="Appointment_Id" />
+    </Key>
+    <Property Name="Appointment_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Patient_Id" Type="Int32" Nullable="false" />
+    <Property Name="Doc_Id" Type="Int32" Nullable="false" />
+    <Property Name="Status" Type="Byte" Nullable="false" />
+    <Property Name="DateTime_Appoinment" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DoctorsNote" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Tests" Relationship="Self.FK_Appoinment" FromRole="Appointment" ToRole="Test" />
+    <NavigationProperty Name="Doctor" Relationship="Self.FK_Doctor" FromRole="Appointment" ToRole="Doctor" />
+    <NavigationProperty Name="MedicalIssues" Relationship="Self.FK_MedicalIssues_Appointment" FromRole="Appointment" ToRole="MedicalIssues" />
+    <NavigationProperty Name="Patient" Relationship="Self.FK_Patient" FromRole="Appointment" ToRole="Patient" />
+    <NavigationProperty Name="Prescriptions" Relationship="Self.FK_Prescription_Appointment" FromRole="Appointment" ToRole="Prescription" />
+  </EntityType>
+  <EntityType Name="Doctor">
+    <Key>
+      <PropertyRef Name="Doctor_Id" />
+    </Key>
+    <Property Name="Doctor_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DoctorName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Speciality" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="NPINumber" Type="Int64" Nullable="false" />
+    <Property Name="PhoneNumber" Type="Int64" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ParcticeLocation" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Appointments" Relationship="Self.FK_Doctor" FromRole="Doctor" ToRole="Appointment" />
+    <NavigationProperty Name="Patient_Symptom" Relationship="Self.FK_Patient_Symptom_Doctor" FromRole="Doctor" ToRole="Patient_Symptom" />
+    <NavigationProperty Name="Recommendations" Relationship="Self.FK_Recommendation_Doctor1" FromRole="Doctor" ToRole="Recommendation" />
+  </EntityType>
+  <EntityType Name="MedicalIssue">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Patient_Id" Type="Int32" Nullable="false" />
+    <Property Name="Appointment_Id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Appointment" Relationship="Self.FK_MedicalIssues_Appointment" FromRole="MedicalIssues" ToRole="Appointment" />
+    <NavigationProperty Name="Patient" Relationship="Self.FK_MedicalIssues_Patient" FromRole="MedicalIssues" ToRole="Patient" />
+  </EntityType>
+  <EntityType Name="Patient">
+    <Key>
+      <PropertyRef Name="Patient_Id" />
+    </Key>
+    <Property Name="Patient_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PatientName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Age" Type="Int32" Nullable="false" />
+    <Property Name="PhoneNumber" Type="Int64" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DOB" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="BloodGroup" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Height" Type="Int32" Nullable="false" />
+    <Property Name="Allergies" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="ActiveIssues" Relationship="Self.FK_ActiveIssues_Patient1" FromRole="Patient" ToRole="ActiveIssues" />
+    <NavigationProperty Name="Appointments" Relationship="Self.FK_Patient" FromRole="Patient" ToRole="Appointment" />
+    <NavigationProperty Name="MedicalIssues" Relationship="Self.FK_MedicalIssues_Patient" FromRole="Patient" ToRole="MedicalIssues" />
+    <NavigationProperty Name="Patient_Symptom" Relationship="Self.FK_Patient_Symptom_Patient" FromRole="Patient" ToRole="Patient_Symptom" />
+    <NavigationProperty Name="Patient_Symptom1" Relationship="Self.FK_Patient_Symptom_Patient1" FromRole="Patient" ToRole="Patient_Symptom" />
+    <NavigationProperty Name="Recommendations" Relationship="Self.FK_Recommendation_Patient1" FromRole="Patient" ToRole="Recommendation" />
+    <NavigationProperty Name="Vitals" Relationship="Self.FK_Vitals_Patient" FromRole="Patient" ToRole="Vitals" />
+    <NavigationProperty Name="Prescriptions" Relationship="CMD_DatabaseModel.FK_Prescription_Patient" FromRole="Patient" ToRole="Prescription" />
+    <Property Name="Reg_Date" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="Patient_Symptom">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Symptom_ID" Type="Int32" Nullable="false" />
+    <Property Name="Symptom_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Reading" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="symp_Doctor_ID" Type="Int32" Nullable="false" />
+    <Property Name="syom_Patient_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Doctor" Relationship="Self.FK_Patient_Symptom_Doctor" FromRole="Patient_Symptom" ToRole="Doctor" />
+    <NavigationProperty Name="Patient" Relationship="Self.FK_Patient_Symptom_Patient" FromRole="Patient_Symptom" ToRole="Patient" />
+    <NavigationProperty Name="Patient1" Relationship="Self.FK_Patient_Symptom_Patient1" FromRole="Patient_Symptom" ToRole="Patient" />
+    <NavigationProperty Name="Symptom" Relationship="Self.FK_Patient_Symptom_Symptom" FromRole="Patient_Symptom" ToRole="Symptom" />
+  </EntityType>
+  <EntityType Name="Prescription">
+    <Key>
+      <PropertyRef Name="Prescription_ID" />
+    </Key>
+    <Property Name="Prescription_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="pres_Appointment_ID" Type="Int32" Nullable="false" />
+    <Property Name="Medicine_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Medicine_Duration" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Time_Of_Day" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Medicine_Cycle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Additional_Comments" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Price" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <NavigationProperty Name="Appointment" Relationship="Self.FK_Prescription_Appointment" FromRole="Prescription" ToRole="Appointment" />
+    <Property Name="pres_Patient_ID" Type="Int32" Nullable="false" />
+    <Property Name="SymptomName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Patient" Relationship="CMD_DatabaseModel.FK_Prescription_Patient" FromRole="Prescription" ToRole="Patient" />
+  </EntityType>
+  <EntityType Name="Recommendation">
+    <Key>
+      <PropertyRef Name="Recommendation_Id" />
+    </Key>
+    <Property Name="Recommendation_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Rec_Doctor_Id" Type="Int32" Nullable="false" />
+    <Property Name="Patient_Id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Doctor" Relationship="Self.FK_Recommendation_Doctor1" FromRole="Recommendation" ToRole="Doctor" />
+    <NavigationProperty Name="Patient" Relationship="Self.FK_Recommendation_Patient1" FromRole="Recommendation" ToRole="Patient" />
+  </EntityType>
+  <EntityType Name="Symptom">
+    <Key>
+      <PropertyRef Name="SymptomId" />
+    </Key>
+    <Property Name="SymptomId" Type="Int32" Nullable="false" />
+    <Property Name="SymptomName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Patient_Symptom" Relationship="Self.FK_Patient_Symptom_Symptom" FromRole="Symptom" ToRole="Patient_Symptom" />
+  </EntityType>
+  <EntityType Name="Test">
+    <Key>
+      <PropertyRef Name="Test_Id" />
+    </Key>
+    <Property Name="Test_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TestName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Appointment_Id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Appointment" Relationship="Self.FK_Appoinment" FromRole="Test" ToRole="Appointment" />
+  </EntityType>
+  <EntityType Name="Vital">
+    <Key>
+      <PropertyRef Name="VitalID" />
+    </Key>
+    <Property Name="VitalID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BloodPressure" Type="Int32" Nullable="false" />
+    <Property Name="Temperature" Type="Decimal" Precision="3" Scale="2" Nullable="false" />
+    <Property Name="DiabaetesReading" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RespirationReadings" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Patient_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Patient" Relationship="Self.FK_Vitals_Patient" FromRole="Vitals" ToRole="Patient" />
+  </EntityType>
+  <Association Name="FK_ActiveIssues_Patient1">
+    <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
+    <End Role="ActiveIssues" Type="Self.ActiveIssue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patient">
+        <PropertyRef Name="Patient_Id" />
+      </Principal>
+      <Dependent Role="ActiveIssues">
+        <PropertyRef Name="Patient_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Appoinment">
+    <End Role="Appointment" Type="Self.Appointment" Multiplicity="1" />
+    <End Role="Test" Type="Self.Test" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Appointment">
+        <PropertyRef Name="Appointment_Id" />
+      </Principal>
+      <Dependent Role="Test">
+        <PropertyRef Name="Appointment_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Doctor">
+    <End Role="Doctor" Type="Self.Doctor" Multiplicity="1" />
+    <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Doctor">
+        <PropertyRef Name="Doctor_Id" />
+      </Principal>
+      <Dependent Role="Appointment">
+        <PropertyRef Name="Doc_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MedicalIssues_Appointment">
+    <End Role="Appointment" Type="Self.Appointment" Multiplicity="1" />
+    <End Role="MedicalIssues" Type="Self.MedicalIssue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Appointment">
+        <PropertyRef Name="Appointment_Id" />
+      </Principal>
+      <Dependent Role="MedicalIssues">
+        <PropertyRef Name="Appointment_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Patient">
+    <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
+    <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patient">
+        <PropertyRef Name="Patient_Id" />
+      </Principal>
+      <Dependent Role="Appointment">
+        <PropertyRef Name="Patient_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Prescription_Appointment">
+    <End Role="Appointment" Type="Self.Appointment" Multiplicity="1" />
+    <End Role="Prescription" Type="Self.Prescription" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Appointment">
+        <PropertyRef Name="Appointment_Id" />
+      </Principal>
+      <Dependent Role="Prescription">
+        <PropertyRef Name="pres_Appointment_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Patient_Symptom_Doctor">
+    <End Role="Doctor" Type="Self.Doctor" Multiplicity="1" />
+    <End Role="Patient_Symptom" Type="Self.Patient_Symptom" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Doctor">
+        <PropertyRef Name="Doctor_Id" />
+      </Principal>
+      <Dependent Role="Patient_Symptom">
+        <PropertyRef Name="symp_Doctor_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Recommendation_Doctor1">
+    <End Role="Doctor" Type="Self.Doctor" Multiplicity="1" />
+    <End Role="Recommendation" Type="Self.Recommendation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Doctor">
+        <PropertyRef Name="Doctor_Id" />
+      </Principal>
+      <Dependent Role="Recommendation">
+        <PropertyRef Name="Rec_Doctor_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MedicalIssues_Patient">
+    <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
+    <End Role="MedicalIssues" Type="Self.MedicalIssue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patient">
+        <PropertyRef Name="Patient_Id" />
+      </Principal>
+      <Dependent Role="MedicalIssues">
+        <PropertyRef Name="Patient_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Patient_Symptom_Patient">
+    <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
+    <End Role="Patient_Symptom" Type="Self.Patient_Symptom" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patient">
+        <PropertyRef Name="Patient_Id" />
+      </Principal>
+      <Dependent Role="Patient_Symptom">
+        <PropertyRef Name="syom_Patient_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Patient_Symptom_Patient1">
+    <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
+    <End Role="Patient_Symptom" Type="Self.Patient_Symptom" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patient">
+        <PropertyRef Name="Patient_Id" />
+      </Principal>
+      <Dependent Role="Patient_Symptom">
+        <PropertyRef Name="syom_Patient_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Recommendation_Patient1">
+    <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
+    <End Role="Recommendation" Type="Self.Recommendation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patient">
+        <PropertyRef Name="Patient_Id" />
+      </Principal>
+      <Dependent Role="Recommendation">
+        <PropertyRef Name="Patient_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vitals_Patient">
+    <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
+    <End Role="Vitals" Type="Self.Vital" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patient">
+        <PropertyRef Name="Patient_Id" />
+      </Principal>
+      <Dependent Role="Vitals">
+        <PropertyRef Name="Patient_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Patient_Symptom_Symptom">
+    <End Role="Symptom" Type="Self.Symptom" Multiplicity="1" />
+    <End Role="Patient_Symptom" Type="Self.Patient_Symptom" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Symptom">
+        <PropertyRef Name="SymptomId" />
+      </Principal>
+      <Dependent Role="Patient_Symptom">
+        <PropertyRef Name="Symptom_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CMD_DatabaseEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ActiveIssues" EntityType="Self.ActiveIssue" />
+    <EntitySet Name="Appointments" EntityType="Self.Appointment" />
+    <EntitySet Name="Doctors" EntityType="Self.Doctor" />
+    <EntitySet Name="MedicalIssues" EntityType="Self.MedicalIssue" />
+    <EntitySet Name="Patients" EntityType="Self.Patient" />
+    <EntitySet Name="Patient_Symptom" EntityType="Self.Patient_Symptom" />
+    <EntitySet Name="Prescriptions" EntityType="Self.Prescription" />
+    <EntitySet Name="Recommendations" EntityType="Self.Recommendation" />
+    <EntitySet Name="Symptoms" EntityType="Self.Symptom" />
+    <EntitySet Name="Tests" EntityType="Self.Test" />
+    <EntitySet Name="Vitals" EntityType="Self.Vital" />
+    <AssociationSet Name="FK_ActiveIssues_Patient1" Association="Self.FK_ActiveIssues_Patient1">
+      <End Role="Patient" EntitySet="Patients" />
+      <End Role="ActiveIssues" EntitySet="ActiveIssues" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Appoinment" Association="Self.FK_Appoinment">
+      <End Role="Appointment" EntitySet="Appointments" />
+      <End Role="Test" EntitySet="Tests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Doctor" Association="Self.FK_Doctor">
+      <End Role="Doctor" EntitySet="Doctors" />
+      <End Role="Appointment" EntitySet="Appointments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MedicalIssues_Appointment" Association="Self.FK_MedicalIssues_Appointment">
+      <End Role="Appointment" EntitySet="Appointments" />
+      <End Role="MedicalIssues" EntitySet="MedicalIssues" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Patient" Association="Self.FK_Patient">
+      <End Role="Patient" EntitySet="Patients" />
+      <End Role="Appointment" EntitySet="Appointments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Prescription_Appointment" Association="Self.FK_Prescription_Appointment">
+      <End Role="Appointment" EntitySet="Appointments" />
+      <End Role="Prescription" EntitySet="Prescriptions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Patient_Symptom_Doctor" Association="Self.FK_Patient_Symptom_Doctor">
+      <End Role="Doctor" EntitySet="Doctors" />
+      <End Role="Patient_Symptom" EntitySet="Patient_Symptom" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Recommendation_Doctor1" Association="Self.FK_Recommendation_Doctor1">
+      <End Role="Doctor" EntitySet="Doctors" />
+      <End Role="Recommendation" EntitySet="Recommendations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MedicalIssues_Patient" Association="Self.FK_MedicalIssues_Patient">
+      <End Role="Patient" EntitySet="Patients" />
+      <End Role="MedicalIssues" EntitySet="MedicalIssues" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Patient_Symptom_Patient" Association="Self.FK_Patient_Symptom_Patient">
+      <End Role="Patient" EntitySet="Patients" />
+      <End Role="Patient_Symptom" EntitySet="Patient_Symptom" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Patient_Symptom_Patient1" Association="Self.FK_Patient_Symptom_Patient1">
+      <End Role="Patient" EntitySet="Patients" />
+      <End Role="Patient_Symptom" EntitySet="Patient_Symptom" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Recommendation_Patient1" Association="Self.FK_Recommendation_Patient1">
+      <End Role="Patient" EntitySet="Patients" />
+      <End Role="Recommendation" EntitySet="Recommendations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vitals_Patient" Association="Self.FK_Vitals_Patient">
+      <End Role="Patient" EntitySet="Patients" />
+      <End Role="Vitals" EntitySet="Vitals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Patient_Symptom_Symptom" Association="Self.FK_Patient_Symptom_Symptom">
+      <End Role="Symptom" EntitySet="Symptoms" />
+      <End Role="Patient_Symptom" EntitySet="Patient_Symptom" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Prescription_Patient" Association="CMD_DatabaseModel.FK_Prescription_Patient">
+      <End Role="Patient" EntitySet="Patients" />
+      <End Role="Prescription" EntitySet="Prescriptions" />
+    </AssociationSet>
+    <FunctionImport Name="GetBYId" ReturnType="Collection(CMD_DatabaseModel.GetBYId_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetParticularPatient" ReturnType="Collection(CMD_DatabaseModel.GetParticularPatient_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="Issues" EntityType="CMD_DatabaseModel.Issue" />
+  </EntityContainer>
+  <Association Name="FK_Prescription_Patient">
+    <End Type="CMD_DatabaseModel.Patient" Role="Patient" Multiplicity="1" />
+    <End Type="CMD_DatabaseModel.Prescription" Role="Prescription" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patient">
+        <PropertyRef Name="Patient_Id" />
+      </Principal>
+      <Dependent Role="Prescription">
+        <PropertyRef Name="pres_Patient_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="GetBYId_Result">
+    <Property Type="Int32" Name="Appointment_Id" Nullable="false" />
+    <Property Type="String" Name="DoctorName" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Speciality" Nullable="false" MaxLength="100" />
+    <Property Type="DateTime" Name="DateTime_Appoinment" Nullable="false" Precision="23" />
+    <Property Type="String" Name="comment" Nullable="false" />
+    <Property Type="String" Name="DoctorsNote" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="GetParticularPatient_Result">
+    <Property Type="String" Name="patientName" Nullable="false" MaxLength="100" />
+    <Property Type="Int32" Name="Age" Nullable="false" />
+    <Property Type="Int64" Name="PhoneNumber" Nullable="false" />
+    <Property Type="String" Name="BloodGroup" Nullable="false" MaxLength="10" />
+    <Property Type="Int32" Name="Height" Nullable="false" />
+    <Property Type="String" Name="Allergies" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="DOB" Nullable="false" />
+    <Property Type="String" Name="Gender" Nullable="false" MaxLength="10" />
+    <Property Type="DateTime" Name="DateTime_Appoinment" Nullable="false" Precision="23" />
+    <Property Type="String" Name="Comment" Nullable="false" />
+    <Property Type="String" Name="DoctorsNote" Nullable="false" />
+    <Property Type="String" Name="DoctorName" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Speciality" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="MedicalProblem" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="SymptomName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Symptom_Name" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Reading" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Medicine_Name" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Medicine_Duration" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Medicine_Cycle" Nullable="false" MaxLength="50" />
+    <Property Type="Decimal" Name="Price" Nullable="false" Precision="18" Scale="0" />
+    <Property Type="String" Name="Additional_Comments" Nullable="false" MaxLength="200" />
+  </ComplexType>
+  <EntityType Name="Issue">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>

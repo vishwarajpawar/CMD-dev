@@ -1,0 +1,176 @@
+﻿@model IEnumerable<CMD.Entities.Appointment>
+    <style>
+        .container  {
+            width: 1000px;
+        }
+        .row .scrollContainer {
+            width: 1000px;
+            padding-left:80px;
+        }
+        .card {
+            margin-top: 10px;
+            margin-right: 10px;
+        }
+        
+        .darkgreen-color {
+            color: darkgreen;
+            font-size: 25px;
+            margin-left:190px;
+            padding-top:10px;
+        }
+
+        .red-color {
+            color: red;
+            font-size: 25px;
+            margin-left: 190px;
+            padding-top: 10px;
+        }
+
+        .blue-color {
+            color: blue;
+            font-size: 25px;
+            margin-left: 190px;
+            padding-top: 10px;
+        }
+
+
+    </style>
+    <div class="container">
+        <div align="right">
+
+            @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+            {
+                <input name="datefilter" type="date" data-date-format="dd/mm/yyyy" style="width: 142px;">
+                <button class="btn btn-success" style="height:34px" type="submit">Go</button>}
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-12">
+                <div class="card">
+                    <span class="titleHeaders">Accepted Appointments</span>
+                    <div class="mt-1">
+                        <span class="count">@ViewBag.message</span>
+                        <span class="day">Today</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 col-12">
+                <div class="card">
+                    <span class="titleHeaders">Total Appointments</span>
+                    <div class="mt-1">
+                        <span class="count">@ViewBag.message2</span>
+                        <span class="day">Today</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 col-12">
+                <div class="card">
+                    <span class="titleHeaders">Cancelled Appointments</span>
+                    <div class="mt-1">
+                        <span class="count">@ViewBag.message1</span>
+                        <span class="day">Today</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<hr>
+<div class="row px-4">
+    <div class="col-xl-6 col-md-3 col-sm-6 col-12 heading">
+        All Appointments
+    </div>
+    <div class="col-xl-2 col-md-4 col-sm-6 col-4 filter">
+        <form id="myform" method="post">
+            <label for="filter">Filter:</label>
+            <select name="filter" id="filter" style="width:80px; height: 30px; background-color: rgb(236, 236, 248);" onchange="datarender()">
+                <option value="">----</option>
+                <option value="4">All</option>
+                <option value="1">Confirmed</option>
+                <option value="2">Cancelled</option>
+                <option value="3">Closed</option>
+            </select>
+        </form>
+    </div>
+    <script>
+        function datarender() {
+            document.forms["myform"].submit();
+        }
+    </script>
+    <div class="col-xl-4 col-md-4 col-sm-6 col-8 filter">
+        <a href="/Appointment/AddAppointment" class="addAppoint pt-1 btn">
+            + New Appointment
+        </a>
+    </div>
+</div>
+<hr />
+<div class="row scrollContainer">
+    @foreach (var item in Model)
+    {
+    <div class="col-md-3 card2" style="margin-left: 2em;">
+        @if (item.Status == 1)
+        {
+            <span>
+                <i class="fas fa-check-circle darkgreen-color"></i>
+            </span>
+        }
+        @if (item.Status == 2)
+        {
+            <span>
+                <i class="fas fa-times-circle red-color"></i>
+            </span>
+        }
+        @if (item.Status == 0)
+        {
+            <span>
+                <i class="fas fa-dot-circle blue-color"></i>
+            </span>
+        }
+        <div class="row" style="margin-top: 0.5em;">
+            <div class="col-4">
+                <img src="https://st2.depositphotos.com/1104517/11965/v/600/depositphotos_119659092-stock-illustration-male-avatar-profile-picture-vector.jpg">
+            </div>
+            <div class="col-8 mt-2">
+                <span class="name">@item.Patient.PatientName (@item.Patient.Age)</span>
+                <div class="row mt-3">
+                    <div class="col-4 message">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="skyblue" class="bi bi-chat-left-dots-fill" viewBox="0 0 16 16">
+                            <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4.414a1 1 0 0 0-.707.293L.854 15.146A.5.5 0 0 1 0 14.793V2zm5 4a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
+                        </svg>
+                    </div>
+                    <div class="line col-1 mt-1">
+                        <div class="vL"></div>
+                    </div>
+                    <div class="col-3 call">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="skyblue" class="bi bi-telephone-fill" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z" />
+                        </svg>
+                    </div>
+                    <div class="line col-1 mt-1">
+                        <div class="vL"></div>
+                    </div>
+                    <div class="col-3 video">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="skyblue" class="bi bi-camera-video-fill" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M0 5a2 2 0 0 1 2-2h7.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 4.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 13H2a2 2 0 0 1-2-2V5z" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-3">
+                <span class="apTime" style="font-size:18px;"><p>@item.DateTime_Appoinment.ToString("t")</p></span>
+                <div class="apDate"><p>@item.DateTime_Appoinment.ToString("dd")/@item.DateTime_Appoinment.ToString("MM")/@item.DateTime_Appoinment.ToString("yyy")</p></div>
+            </div>
+            <div class="line2 col-1 mt-1">
+                <div class="vL2"></div>
+            </div>
+            <div class="col-7 apIssue">
+                &nbsp;&nbsp;@item.Comment
+            </div>
+        </div>
+        
+    </div>
+    }
+</div>
+
+

@@ -1,0 +1,80 @@
+﻿@model CMD.UI.Web.ViewModel.AppointmentViewModel
+
+@{
+    ViewBag.Title = "Appointment Summary";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+<div class="container shadow-lg p-4 mb-5 bg-body rounded">
+
+    <div class="row">
+
+        <div class="col-lg-12">
+
+            <h2>Appointment Summary</h2>
+            <hr />
+
+            <div class="row">
+                <div class=" col-lg-6">
+                    <h1 style="color: #696969;padding-bottom:12px;">Patient</h1>
+                    <div class="col-lg-2">
+                        <img src="https://st2.depositphotos.com/1104517/11965/v/600/depositphotos_119659092-stock-illustration-male-avatar-profile-picture-vector.jpg">
+
+                    </div>
+                    <div class="col-lg-4 info">
+                        <p class="h5">@Model.Patient.PatientName</p>
+                        <p class="h5">Age: @Model.Patient.Age</p>
+                        <p class="h5" style="color: #696969;">
+                            @foreach (var issue in Model.MedicalIssues)
+                            {
+                                @issue.ToString();
+
+
+                            }
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="col-lg-6">
+                    <h1 style="color: #696969; padding-bottom:12px;">Doctor</h1>
+                    <div class="col-lg-2">
+                        <img src="https://st2.depositphotos.com/1104517/11965/v/600/depositphotos_119659092-stock-illustration-male-avatar-profile-picture-vector.jpg">
+                    </div>
+                    <div class="col-lg-4">
+                        <p class=" h5">@Model.Doctor.DoctorName</p>
+                        <p class="lead" style="color: #696969">@Model.Doctor.Speciality (10 years)</p>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+
+       
+
+    </div>
+    <hr />
+    <div class="row">
+
+        <div class="col-lg-6">
+            <div class="row " id="rcorners2"><p style="font-size:16px">Type</p><p class="lead text-center ">Appointment</p></div>
+            <div class="row " id="rcorners2"><p style="font-size:16px">Reason</p><p class="lead text-center">@Model.Reason</p></div>
+           
+        </div>
+        <div class="col-lg-6">
+            <div class="row" id="rcorners2"><p style="font-size:16px">Time</p><p class="lead text-center">@Model.DateTime</p></div>
+            <div class="row" id="rcorners2"><p style="font-size:16px">Status</p><p class="lead text-center text-danger">Pending PCP approval!</p></div>
+        </div>
+
+    </div>
+    <div class="text-center" style="margin-top:25px">
+        <a type="button" class="btn btn-primary btn-lg " id="btnSave" href="/Home/Index" align="center">Back To Appointmets</a>
+    </div>
+
+</div>

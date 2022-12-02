@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d53648763a6c491caecee638c7f062c9" Name="Diagram1">
+        <EntityTypeShape EntityType="CMD_DatabaseModel.ActiveIssue" Width="1.5" PointX="3" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.Appointment" Width="1.5" PointX="3" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.Doctor" Width="1.5" PointX="3.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.MedicalIssue" Width="1.5" PointX="8.25" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.Patient" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.Patient_Symptom" Width="1.5" PointX="6" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.Prescription" Width="1.5" PointX="5.25" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.Recommendation" Width="1.5" PointX="6" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.Symptom" Width="1.5" PointX="3.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.Test" Width="1.5" PointX="5.25" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.Vital" Width="1.5" PointX="3" PointY="24.5" IsExpanded="true" />
+        <AssociationConnector Association="CMD_DatabaseModel.FK_ActiveIssues_Patient1" ManuallyRouted="false" />
+        <AssociationConnector Association="CMD_DatabaseModel.FK_Appoinment" ManuallyRouted="false" />
+        <AssociationConnector Association="CMD_DatabaseModel.FK_Doctor" ManuallyRouted="false" />
+        <AssociationConnector Association="CMD_DatabaseModel.FK_MedicalIssues_Appointment" ManuallyRouted="false" />
+        <AssociationConnector Association="CMD_DatabaseModel.FK_Patient" ManuallyRouted="false" />
+        <AssociationConnector Association="CMD_DatabaseModel.FK_Prescription_Appointment" ManuallyRouted="false" />
+        <AssociationConnector Association="CMD_DatabaseModel.FK_Patient_Symptom_Doctor" ManuallyRouted="false" />
+        <AssociationConnector Association="CMD_DatabaseModel.FK_Recommendation_Doctor1" ManuallyRouted="false" />
+        <AssociationConnector Association="CMD_DatabaseModel.FK_MedicalIssues_Patient" ManuallyRouted="false" />
+        <AssociationConnector Association="CMD_DatabaseModel.FK_Patient_Symptom_Patient" ManuallyRouted="false" />
+        <AssociationConnector Association="CMD_DatabaseModel.FK_Patient_Symptom_Patient1" ManuallyRouted="false" />
+        <AssociationConnector Association="CMD_DatabaseModel.FK_Recommendation_Patient1" ManuallyRouted="false" />
+        <AssociationConnector Association="CMD_DatabaseModel.FK_Vitals_Patient" ManuallyRouted="false" />
+        <AssociationConnector Association="CMD_DatabaseModel.FK_Patient_Symptom_Symptom" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.Account" Width="1.5" PointX="0.625" PointY="0.625" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.ActionTemplate" Width="1.5" PointX="13.625" PointY="0.75" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.ActionTemplateVersion" Width="1.5" PointX="15.625" PointY="0.75" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.ApiKey" Width="1.5" PointX="15.625" PointY="4.75" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.Artifact" Width="1.5" PointX="15.625" PointY="7.75" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.AutoDeployQueueItem" Width="1.5" PointX="9.625" PointY="14.75" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.BuildInformation" Width="1.5" PointX="14.625" PointY="14.75" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.Certificate" Width="1.5" PointX="16.625" PointY="14.75" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.Channel" Width="1.5" PointX="17.625" PointY="0.75" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.CommunityActionTemplate" Width="1.5" PointX="17.625" PointY="4.75" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.Configuration" Width="1.5" PointX="17.625" PointY="7.75" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.DashboardConfiguration" Width="1.5" PointX="11.625" PointY="15.75" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.DeletedSpace" Width="1.5" PointX="17.625" PointY="10.75" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.Deployment" Width="1.5" PointX="12.625" PointY="11" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.DeploymentEnvironment" Width="1.5" PointX="2.625" PointY="16.75" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.DeploymentHistory" Width="1.5" PointX="4.625" PointY="16.75" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.DeploymentProcess" Width="1.5" PointX="18.625" PointY="13.75" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.DeploymentRelatedMachine" Width="1.5" PointX="14.875" PointY="12" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.DeploymentSetting" Width="1.5" PointX="19.625" PointY="0.75" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.Event" Width="1.5" PointX="10.625" PointY="6" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.EventRelatedDocument" Width="1.5" PointX="12.875" PointY="7.25" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.ExtensionConfiguration" Width="1.5" PointX="19.625" PointY="3.75" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.Feed" Width="1.5" PointX="19.625" PointY="6.75" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.GitEntityStash" Width="1.5" PointX="10.875" PointY="2" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.Interruption" Width="1.5" PointX="13.625" PointY="17.75" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.Invitation" Width="1.5" PointX="19.625" PointY="10.75" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.KeyAllocation" Width="1.5" PointX="18.625" PointY="17.75" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.LibraryVariableSet" Width="1.5" PointX="20.625" PointY="13.75" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.Lifecycle" Width="1.5" PointX="20.625" PointY="16.75" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.Machine" Width="1.5" PointX="21.625" PointY="0.75" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.MachinePolicy" Width="1.5" PointX="21.625" PointY="6.75" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.Mutex" Width="1.5" PointX="9.625" PointY="19.75" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.NuGetPackage" Width="1.5" PointX="21.625" PointY="9.75" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.OctopusServerNode" Width="1.5" PointX="15.625" PointY="19.75" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.OctopusServerNodeStatu" Width="1.5" PointX="20.625" PointY="19.75" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.Project" Width="1.5" PointX="8.625" PointY="1" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.ProjectGroup" Width="1.5" PointX="6.625" PointY="20.75" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.ProjectTrigger" Width="1.5" PointX="22.625" PointY="13.75" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.Proxy" Width="1.5" PointX="17.625" PointY="20.75" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.Release" Width="1.5" PointX="22.625" PointY="17.75" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.Role" Width="1.5" PointX="1.5" PointY="6.25" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.Runbook" Width="1.5" PointX="23.625" PointY="0.75" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.RunbookProcess" Width="1.5" PointX="23.625" PointY="4.75" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.RunbookRun" Width="1.5" PointX="23.625" PointY="8.75" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.RunbookRunHistory" Width="1.5" PointX="22.625" PointY="21.75" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.RunbookSnapshot" Width="1.5" PointX="8.625" PointY="22.75" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.SchemaVersion" Width="1.5" PointX="10.625" PointY="22.75" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.ScopedUserRole" Width="1.5" PointX="12.625" PointY="22.75" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.ServerTask" Width="1.5" PointX="14.625" PointY="22.75" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.Space" Width="1.5" PointX="24.625" PointY="13.75" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.Subscription" Width="1.5" PointX="24.625" PointY="16.75" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.sysdiagram" Width="1.5" PointX="19.625" PointY="22.75" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.TagSet" Width="1.5" PointX="24.625" PointY="20.75" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.Team" Width="1.5" PointX="25.625" PointY="0.75" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.Tenant" Width="1.5" PointX="25.625" PointY="3.75" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.TenantVariable" Width="1.5" PointX="25.625" PointY="7.75" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.User" Width="1.5" PointX="16.625" PointY="23.75" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.UserRole" Width="1.5" PointX="24.625" PointY="23.75" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.UsersRole" Width="1.5" PointX="0.75" PointY="8.875" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.VariableSet" Width="1.5" PointX="26.625" PointY="11.75" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.Worker" Width="1.5" PointX="26.625" PointY="15.75" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.WorkerPool" Width="1.5" PointX="26.625" PointY="20.75" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.WorkerTaskLease" Width="1.5" PointX="26.625" PointY="24.75" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.DataMigrationState" Width="1.5" PointX="27.625" PointY="0.75" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.OctopusServerInstallationHistory" Width="1.5" PointX="27.625" PointY="3.75" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.RelatedDocument" Width="1.5" PointX="27.625" PointY="6.75" />
+        <AssociationConnector Association="CMD_DatabaseModel.FK_DeploymentRelatedMachine_DeploymentId" />
+        <AssociationConnector Association="CMD_DatabaseModel.FK_Doctor_UsersRoles" />
+        <AssociationConnector Association="CMD_DatabaseModel.FK_EventRelatedDocument_EventId" />
+        <AssociationConnector Association="CMD_DatabaseModel.FK_GitEntityStash_ProjectId" />
+        <AssociationConnector Association="CMD_DatabaseModel.FK_Patient_UsersRoles" />
+        <AssociationConnector Association="CMD_DatabaseModel.FK_Prescription_Patient" />
+        <AssociationConnector Association="CMD_DatabaseModel.FK_UsersRoles_Roles" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.Dashboard" Width="1.5" PointX="5.75" PointY="23.75" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.IdsInUse" Width="1.5" PointX="0.75" PointY="19.75" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.MultiTenancyDashboard" Width="1.5" PointX="11.75" PointY="25.75" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.Release_WithDeploymentProcess" Width="1.5" PointX="19.75" PointY="25.75" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.RunbookSnapshot_WithRunbookProcess" Width="1.5" PointX="7.75" PointY="26.75" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.TenantProject" Width="1.5" PointX="0.75" PointY="27.75" />
+        <EntityTypeShape EntityType="CMD_DatabaseModel.Issue" Width="1.5" PointX="0.75" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
